@@ -581,6 +581,46 @@ class WhatsAppCloudApi
     }
 
     /**
+     * Get conversational components settings.
+     *
+     * @return Response
+     *
+     * @throws Response\ResponseException
+     */
+    public function conversationalComponents(): Response
+    {
+        $request = new Request\ConversationalComponentsRequest\ConversationalComponentsRequest(
+            "conversational_automation",
+            $this->app->accessToken(),
+            $this->app->fromPhoneNumberId(),
+            $this->timeout
+        );
+
+        return $this->client->conversationalComponents($request);
+    }
+
+    /**
+     * Update conversational components settings.
+     *
+     * @param array $components The conversational components to be updated.
+     *
+     * @return Response
+     *
+     * @throws Response\ResponseException
+     */
+    public function updateConversationalComponents(array $components): Response
+    {
+        $request = new Request\ConversationalComponentsRequest\UpdateConversationalComponentsRequest(
+            $components,
+            $this->app->accessToken(),
+            $this->app->fromPhoneNumberId(),
+            $this->timeout
+        );
+
+        return $this->client->updateConversationalComponents($request);
+    }
+
+    /**
      * Returns the Facebook Whatsapp Access Token.
      *
      * @return string

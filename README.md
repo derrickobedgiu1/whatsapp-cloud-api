@@ -505,6 +505,34 @@ $whatsapp_cloud_api->updateBusinessProfile([
 
 Fields list: https://developers.facebook.com/docs/whatsapp/cloud-api/reference/business-profiles
 
+### Get Conversational Components Settings
+```php
+<?php
+
+$whatsapp_cloud_api->conversationalComponents();
+```
+
+### Update Conversational Components Settings
+```php
+<?php
+
+$whatsapp_cloud_api->updateConversationalComponents([
+    'enable_welcome_message' => true, // true/false
+    'commands' => [
+        [
+            'command_name' => 'tickets',
+            'command_description' => 'Book flight tickets',
+        ],
+        [
+            'command_name' => 'hotel',
+            'command_description' => 'Book hotel',
+        ],
+    ],
+    'prompts' => ['Book a flight','plan a vacation']
+]);
+```
+Update selectively: Provide only the new details you want to change. Existing settings for those fields will be automatically overwritten.
+
 ## Features
 
 - Send Text Messages
@@ -526,6 +554,7 @@ Fields list: https://developers.facebook.com/docs/whatsapp/cloud-api/reference/b
 - Mark messages as read
 - React to a Message
 - Get/Update Business Profile
+- Get/Update Conversational Components
 - Webhook verification
 - Webhook notifications
 
